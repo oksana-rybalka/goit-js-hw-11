@@ -16,3 +16,59 @@
 @import url('./badges.css');
 @import url('./back-link.css');
 @import url('./footer.css');
+
+.container-images {
+  display: block;
+  width: 1440px;
+  background-color: cornsilk;
+
+}
+.form-img {
+ display: blok;
+ flex-direction: row;
+  gap: 10px;
+  padding-top: 36px;
+  padding-bottom: 32px;
+  margin-left: calc(100%/3);
+  
+ 
+}
+.input-img {
+width: 272px;
+padding: 10px 16px;
+border: 1px solid #808080;
+border-radius: 8px;
+font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0.04em;
+  color: #808080;
+  
+}
+.input-img:hover {
+  border: 1px solid #000;
+}
+.input-img:focus {
+  outline: 2px solid #f15b1b;
+  border-style: none;
+}
+.btn {
+  font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.04em;
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 8px;
+    width: 91px;
+    background-color: #eb4b07;
+    border-style: none;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: ;
+}
+.btn:hover {
+  background-color: #f7850bf3;
+ 
+}
