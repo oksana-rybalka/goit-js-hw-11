@@ -20,7 +20,7 @@
 .container-images {
   display: block;
   width: 1440px;
-  background-color: cornsilk;
+  background-color: rgb(80, 77, 67);
 
 }
 .form-img {
@@ -71,4 +71,38 @@ font-family: var(--font-family);
 .btn:hover {
   background-color: #f7850bf3;
  
+}
+.loader {
+  font-size: 48px;
+  color: #FFF;
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  position: relative;
+  margin-left: calc(100%/2.5);
+}
+
+.loader:after {
+  content: 'Loading';
+  position: relative;
+  z-index: 5;
+}
+
+.loader:before {
+  content: '';
+  height: 12px;
+  border: 1px solid;
+  border-radius: 10px;
+  width: 100%;
+  position: absolute;
+  bottom: 0px;
+  background: linear-gradient(#FF3D00 100%, transparent 0) no-repeat;
+  background-size: 0% auto;
+  animation: 10s lineGrow linear infinite;
+}
+
+@keyframes lineGrow {
+  to {
+    background-size: 100% auto
+  }
 }
