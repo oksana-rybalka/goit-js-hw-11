@@ -1,47 +1,55 @@
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
+
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
+import { fetchImages } from "./js/pixabay-api";
+import { renderImages } from "./js/render-functions";
+
 const formImg = document.querySelector('.form-img');
 const inputImg = document.querySelector('.input-img');
-const searchBtn = document.querySelector('.btn');
-const listImg = document.querySelector('.list-img')
 
-formImg.addEventListener("submit", (event) => {
-    event.preventDefault();
-    handleSearch();
-});
+const listImg = document.querySelector('.list-img');
+const loader = document.querySelector('.loader')
+
+loader.style.display = 'none';
+formImg.addEventListener("submit", handleSearch)
     
-function handleSearch() {
-    searchBtn.disabled = false;
+function handleSearch(event) {
+    event.preventDefault();
     const inputValue = inputImg.value.trim();
-    if (!inputValue) {
-        iziToast.warning({
-            title: "Warning!",
-            message: "Please enter a search term!"
-        });
-        return;
-    }
-       
-    searchBtn.disabled = true;
-    listImg.innerHTML = "";
-    document.body.classList.add("loading");
-} 
 
-fetchImages(url)
-        .then(images => {
-            document.body.classList.remove("loading");
-            searchBtn.disabled = false;
+    console.log(inputValue);
+    if (inputValue === "") {
+        return iziToast.warning({
+            position: "topCenter",
+            title: 'Warning!',
+            message: 'Please enter a search term!',
+        });
+        
+    }else{
+        loader.style.display = 'block';
+        fetchImages()
+        .then((images) => {
             if (images.length === 0) {
-                iziToast.info({
-                    title: "No Results",
-                    message: "Sorry,there are no images matching your search query. Please try again!"
-                })
+                iziToast.warning({
+                    position: "topCenter",
+                    title: "No results!",
+                    message: "Sorry, there are no images matching your search query. Please try again!",
+
+                });
             } else {
-                renderImage(images);
+             
+                renderImages(images);
             }
         })
+    loader.style.display = 'none';
+    }  
+   
+
+
+
       
     
 

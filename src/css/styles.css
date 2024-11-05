@@ -16,7 +16,14 @@
 @import url('./badges.css');
 @import url('./back-link.css');
 @import url('./footer.css');
-
+  body {
+      padding: 15px;
+      line-height: 1.5;
+      letter-spacing: 0.04em;
+      /* -webkit-font-smoothing: antialiased; */
+  
+  background-color: rgb(80, 77, 67);;
+}
 .container-images {
   display: block;
   width: 1440px;
@@ -90,7 +97,7 @@ font-family: var(--font-family);
 
 .loader:before {
   content: '';
-  height: 12px;
+  height: 8px;
   border: 1px solid;
   border-radius: 10px;
   width: 100%;
@@ -105,4 +112,29 @@ font-family: var(--font-family);
   to {
     background-size: 100% auto
   }
+}
+
+.list-img {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      list-style: none;
+      padding: 34px 156px;
+      margin: 0;
+}
+
+.list-img-item {
+  width: calc((100% - 24px * 2) / 3);
+  box-sizing: border-box;
+}
+
+.image-info {
+  display:flex;
+  align-content: center;
+}
+.img-link {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
 }
