@@ -23,4 +23,4 @@ import { inputValue } from "./main.js";
         })
 
 }
-export { fetchImages }
+export { fetchImages };

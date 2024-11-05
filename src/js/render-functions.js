@@ -34,4 +34,4 @@ import 'simplelightbox/dist/simple-lightbox.min.css'
     });
     lightbox.refresh();
 }
-export {renderImages}
+export { renderImages };

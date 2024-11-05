@@ -28,31 +28,25 @@ function handleSearch(event) {
             message: 'Please enter a search term!',
         });
         
-    }else{
+    } else {
         loader.style.display = 'block';
         fetchImages()
-        .then((images) => {
-            if (images.length === 0) {
-                iziToast.warning({
-                    position: "topCenter",
-                    title: "No results!",
-                    message: "Sorry, there are no images matching your search query. Please try again!",
+            .then((images) => {
+                if (images.length === 0) {
+                    iziToast.warning({
+                        position: "topCenter",
+                        title: "No results!",
+                        message: "Sorry, there are no images matching your search query. Please try again!",
 
-                });
-            } else {
+                    });
+                } else {
              
-                renderImages(images);
-            }
-        })
-    loader.style.display = 'none';
-    }  
-   
-
-
-
-      
+                    renderImages(images);
+                }
+            })
+        loader.style.display = 'none'
     
-
-    
+    }
+}    
   
 
