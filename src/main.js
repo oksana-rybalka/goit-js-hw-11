@@ -7,20 +7,20 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 import { fetchImages } from "./js/pixabay-api";
 import { renderImages } from "./js/render-functions";
 
+
 const formImg = document.querySelector('.form-img');
 const inputImg = document.querySelector('.input-img');
 
-const listImg = document.querySelector('.list-img');
 const loader = document.querySelector('.loader')
 
-loader.style.display = 'none';
+
 formImg.addEventListener("submit", handleSearch)
     
 function handleSearch(event) {
     event.preventDefault();
     const inputValue = inputImg.value.trim();
-
-    console.log(inputValue);
+    loader.classList.remove("hidden");
+    
     if (inputValue === "") {
         return iziToast.warning({
             position: "topCenter",
@@ -29,10 +29,11 @@ function handleSearch(event) {
         });
         
     } else {
-        loader.style.display = 'block';
-        fetchImages()
-            .then((images) => {
-                if (images.length === 0) {
+        
+        fetchImages(inputValue)
+            .then(({ hits }) => {
+                loader.classList.add("hidden");
+                if (hits.length === 0) {
                     iziToast.warning({
                         position: "topCenter",
                         title: "No results!",
@@ -41,10 +42,10 @@ function handleSearch(event) {
                     });
                 } else {
              
-                    renderImages(images);
+                    renderImages(hits);
+                    
                 }
             })
-        loader.style.display = 'none'
     
     }
 }    
