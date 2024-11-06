@@ -10,7 +10,7 @@ import { renderImages } from "./js/render-functions";
 
 const formImg = document.querySelector('.form-img');
 const inputImg = document.querySelector('.input-img');
-
+const listImages = document.querySelector('.list-img');
 const loader = document.querySelector('.loader')
 
 
@@ -20,12 +20,16 @@ function handleSearch(event) {
     event.preventDefault();
     const inputValue = inputImg.value.trim();
     loader.classList.remove("hidden");
+    formImg.reset();
+   
     
     if (inputValue === "") {
         return iziToast.warning({
             position: "topCenter",
             title: 'Warning!',
             message: 'Please enter a search term!',
+            backgroundColor: '#ef4040'
+             
         });
         
     } else {
@@ -38,15 +42,16 @@ function handleSearch(event) {
                         position: "topCenter",
                         title: "No results!",
                         message: "Sorry, there are no images matching your search query. Please try again!",
-
+                       
                     });
                 } else {
              
-                    renderImages(hits);
+                    renderImages(hits); 
                     
                 }
+            
             })
-    
+          
     }
 }    
   
