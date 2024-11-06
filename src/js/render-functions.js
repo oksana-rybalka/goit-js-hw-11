@@ -32,7 +32,7 @@ function renderImages({ images }) {
         </a>
     </li> `).join('');
 
-    listImage.insertAdjacentHTML('beforeend', markup);
+    listImages.insertAdjacentHTML('beforeend', markup);
     
     lightbox.refresh();
 }
