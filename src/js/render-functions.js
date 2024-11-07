@@ -8,7 +8,7 @@ const listImages = document.querySelector('.list-img');
         captionDelay: 250,
     });
 
-function renderImages({ images }) {
+function renderImages(images) {
     const markup = images
         .map(
             ({
@@ -20,20 +20,35 @@ function renderImages({ images }) {
                 comments,
                 downloads,
             }) =>
-                `<li class="list-img-item">
-        <a href="${largeImageURL}" class="img-link">
-        <img src="${webformatURL}" alt="${tags}" width="360"/>
-        <div class="image-info">
-        <p class="text-info"><b class="title-text-info">Views:</b>${views}</p>
-        <p class="text-info"><b class="title-text-info">Likes:<b>${likes}</p>
-        <p class="text-info"><b class="title-text-info">Comments:<b>${comments}</p>
-        <p class="text-info"><b class="title-text-info">Downloads:<b>${downloads}</p>
+                
+   `<li class="list-img-item">
+      <a href="${largeImageURL}" class="img-link">
+      <img src="${webformatURL}" alt="${tags}" width="100%"/>
+       <div class="image-info">
+        <div class="text-info-item">
+          <h2 class="title">Likes</h2>
+          <p class="data-title">${likes}</p>
         </div>
+        <div class="text-info-item"
+          <h2 class="title">Views</h2>
+          <p class="data-title">${views}</p>
+        </div>
+        <div class="text-info-item">
+          <h2 class="title">Comments</h2>
+          <p class="data-title">${comments}</p>
+        </div>
+        <div class="text-info-item">
+          <h2 class="title">Downloads</h2>
+          <p class="data-title">${downloads}</p>
+        </div>
+      </div>
         </a>
     </li> `).join('');
 
     listImages.insertAdjacentHTML('beforeend', markup);
     
     lightbox.refresh();
+  
+   
 }
 export { renderImages };
