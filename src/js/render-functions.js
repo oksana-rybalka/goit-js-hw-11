@@ -1,27 +1,26 @@
 import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css'
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const listImages = document.querySelector('.list-img');
- const lightbox = new SimpleLightbox('.img-link', {
-        captions: true,
-        captionsData: 'alt',
-        captionDelay: 250,
-    });
+const lightbox = new SimpleLightbox('.img-link', {
+  captions: true,
+  captionsData: 'alt',
+  captionDelay: 250,
+});
 
 function renderImages(images) {
-    const markup = images
-        .map(
-            ({
-                largeImageURL,
-                webformatURL,
-                tags,
-                likes,
-                views,
-                comments,
-                downloads,
-            }) =>
-                
-   `<li class="list-img-item">
+  const markup = images
+    .map(
+      ({
+        largeImageURL,
+        webformatURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) =>
+        `<li class="list-img-item">
       <a href="${largeImageURL}" class="img-link">
       <img src="${webformatURL}" alt="${tags}" width="100%"/>
        <div class="image-info">
@@ -43,12 +42,12 @@ function renderImages(images) {
         </div>
       </div>
         </a>
-    </li> `).join('');
+    </li> `
+    )
+    .join('');
 
-    listImages.insertAdjacentHTML('beforeend', markup);
-    
-    lightbox.refresh();
-  
-   
+  listImages.insertAdjacentHTML('beforeend', markup);
+
+  lightbox.refresh();
 }
 export { renderImages };
